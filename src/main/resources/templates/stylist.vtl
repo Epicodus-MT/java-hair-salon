@@ -1,0 +1,16 @@
+<!--client.vtl-->
+<h1>$stylist.getName()'s client list:</h1>
+
+#if($clients)
+  <ul>
+    #foreach ($client in $stylist.getClients($stylist.getId()))
+      <li>
+        <a href="/stylists/$stylist.getId()/clients/$client.getId()">$client.getName()</a>
+      </li>
+    #end
+  </ul>
+#else
+  <p>There are no clients yet.</p>
+#end
+
+<!--client.vtl-->

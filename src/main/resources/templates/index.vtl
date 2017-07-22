@@ -1,0 +1,47 @@
+<!--index.vtl-->
+<h1>Comb As You Are -- Hair Salon</h1>
+
+<h2> All Stylists: </h2>
+
+#if($stylists)
+  <p>Click on a stylist to see their clients:</p>
+  <ul>
+    #foreach ($stylist in $stylists)
+      <li><a href="/stylists/$stylist.getId()">$stylist.getName()</a><form action="/stylists/$stylist.getId()/delete" method="post">
+        <button type="submit" class="btn btn-danger" id="delete-stylist">Delete Stylist</button>
+      </form></li>
+    #end
+  </ul>
+#else
+  <p>There are no stylists yet! Find some!</p>
+#end
+
+<h2>New Stylist:</h2>
+
+<form action="/stylists" method="post">
+  <label for="name">Stylist name</label>
+  <input id="name" name="name" type="text">
+  <button type="submit" class="btn btn-success">Add Stylist</button>
+</form>
+
+<h2>New client:</h2>
+
+<form action="/clients" method="post">
+  <label for="stylistId">Select a Stylist</label>
+<select id='stylistId' name='stylistId' type='text'>
+  #foreach($stylist in $stylists)
+    <option value="$stylist.getId()">$stylist.getName()</option>
+  #end
+</select>
+
+  <div class="form-group">
+    <label for="name">name</label>
+    <input id="name" name="name" type="text" class="form-control">
+
+    <label for="note">note</label>
+    <input id="note" name="note" type="text" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-success">Add client</button>
+</form>
+<!--index.vtl-->
