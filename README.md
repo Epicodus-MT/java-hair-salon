@@ -40,10 +40,19 @@ java-hair-salon/
 |    |          └──public/
 |    |               └──styles.css
 |    |          └──templates/
+|    |               └──client-form.vtl
+|    |               └──client-stylist-form.vtl
+|    |               └──client-stylist-success.vtl
 |    |               └──client.vtl
+|    |               └──clients.vtl
+|    |               └──delete-success.vtl
 |    |               └──index.vtl
 |    |               └──layout.vtl
+|    |               └──stylist-form.vtl
+|    |               └──stylist-success.vtl
 |    |               └──stylist.vtl
+|    |               └──stylists.vtl
+|    |               └──success.vtl
 |    └── test/
 │         └── java/
 |               └── ClientTest.java
@@ -68,7 +77,7 @@ $ cd hair-salon
 $ postgres
 ```
 * _Open a new tab in terminal by pressing [command ⌘] + [T]_
-* _In the new tab, create 'sales_tracker' database:_
+* _In the new tab, create 'hair_salon' database:_
 ```
 $ psql
 $ CREATE DATABASE hair_salon;
