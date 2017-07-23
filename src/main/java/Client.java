@@ -2,13 +2,13 @@ import java.util.ArrayList;
 import java.util.List;
 import org.sql2o.*;
 
-public class Product {
+public class Client {
   private String name;
   private String detail;
   private int stylistId;
   private int id;
 
-  public Product(String name, String detail, int stylistId) {
+  public Client(String name, String detail, int stylistId) {
     this.name = name;
     this.detail = detail;
     this.stylistId = stylistId;
@@ -32,13 +32,13 @@ public class Product {
 
 
   @Override
-  public boolean equals(Object otherProduct){
-    if (!(otherProduct instanceof Product)) {
+  public boolean equals(Object otherClient){
+    if (!(otherClient instanceof Client)) {
       return false;
     } else {
-      Product newProduct = (Product) otherProduct;
-      return this.getName().equals(newProduct.getName()) &&
-             this.getDetail()==(newProduct.getDetail());
+      Client newClient = (Client) otherClient;
+      return this.getName().equals(newClient.getName()) &&
+             this.getDetail()==(newClient.getDetail());
     }
   }
 
@@ -54,25 +54,25 @@ public class Product {
     }
   }
 
-  public static List<Product> all() {
+  public static List<Client> all() {
     String sql = "SELECT id, name, detail FROM clients";
     try(Connection con = DB.sql2o.open()) {
-     return con.createQuery(sql).executeAndFetch(Product.class);
+     return con.createQuery(sql).executeAndFetch(Client.class);
     }
   }
 
-  public List<Object> getProducts() {
-    List<Object> allProducts = new ArrayList<Object>();
+  public List<Object> getClients() {
+    List<Object> allClients = new ArrayList<Object>();
 
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM clients WHERE clientId=:id;";
-      List<Product> clients = con.createQuery(sql)
+      List<Client> clients = con.createQuery(sql)
         .addParameter("id", this.id)
         .throwOnMappingFailure(false)
-        .executeAndFetch(Product.class);
-      allProducts.addAll(clients);
+        .executeAndFetch(Client.class);
+      allClients.addAll(clients);
     }
-    return allProducts;
+    return allClients;
   }
 
   public List<Stylist> getStylists() {
@@ -81,7 +81,9 @@ public class Product {
       List<Integer> stylistIds = con.createQuery(joinQuery)
         .addParameter("client_id", this.getId())
         .executeAndFetch(Integer.class);
+
       List<Stylist> stylists = new ArrayList<Stylist>();
+
       for (Integer stylistId : stylistIds) {
         String stylistQuery = "SELECT * FROM stylists WHERE id = :stylistId";
         Stylist stylist = con.createQuery(stylistQuery)
@@ -103,13 +105,13 @@ public class Product {
     }
   }
 
-  public static Product find(int id) {
+  public static Client find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM clients where id=:id";
-      Product client = con.createQuery(sql)
+      Client client = con.createQuery(sql)
         .addParameter("id", id)
         .throwOnMappingFailure(false)
-        .executeAndFetchFirst(Product.class);
+        .executeAndFetchFirst(Client.class);
     return client;
     }
   }
