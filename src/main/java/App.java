@@ -37,7 +37,7 @@ public class App {
       Client newClient = new Client(name, detail, stylist.getId());
       newClient.save();
       model.put("stylist", stylist);
-      model.put("template", "templates/stylist-client-success.vtl");
+      model.put("template", "templates/client-stylist-success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -61,7 +61,7 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       String name = request.queryParams("name");
       Stylist newStylist = new Stylist(name);
-      newStylist.save(); // Saves to the stylist database table
+      newStylist.save();
       model.put("template", "templates/stylist-success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -77,7 +77,7 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
       model.put("stylist", stylist);
-      model.put("template", "templates/stylist-client-form.vtl");
+      model.put("template", "templates/client-stylist-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
