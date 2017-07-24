@@ -18,7 +18,7 @@ public class Client {
     return name;
   }
 
-  public String getDetail() {
+  public String getDetails() {
     return details;
   }
 
@@ -37,8 +37,8 @@ public class Client {
       return false;
     } else {
       Client newClient = (Client) otherClient;
-      return this.getName().equals(newClient.getName()) &&
-             this.getDetail()==(newClient.getDetail());
+      return this.getName().equals(newClient.getName())
+          && this.getDetails().equals(newClient.getDetails());
     }
   }
 
