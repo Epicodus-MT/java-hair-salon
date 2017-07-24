@@ -33,8 +33,8 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams("stylistId")));
       String name = request.queryParams("name");
-      String detail = request.queryParams("detail");
-      Client newClient = new Client(name, detail, stylist.getId());
+      String details = request.queryParams("details");
+      Client newClient = new Client(name, details, stylist.getId());
       newClient.save();
       model.put("stylist", stylist);
       model.put("template", "templates/client-stylist-success.vtl");
@@ -104,9 +104,9 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       Client client = Client.find(Integer.parseInt(request.params("id")));
       String name = request.queryParams("name");
-      String detail = request.queryParams("detail");
+      String details = request.queryParams("details");
       Stylist stylist = Stylist.find(client.getStylistId());
-      client.update(name, detail);
+      client.update(name, details);
       String url = String.format("/stylists/%d/clients/%d", stylist.getId(), client.getId());
       response.redirect("/");
       return new ModelAndView(model, layout);

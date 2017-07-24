@@ -7,9 +7,12 @@
   <p>Click on a stylist to see their clients:</p>
   <ul>
     #foreach ($stylist in $stylists)
-      <li><a href="/stylists/$stylist.getId()">$stylist.getName()</a><form action="/stylists/$stylist.getId()/delete" method="post">
-        <button type="submit" class="btn btn-primary" id="delete-stylist">DELETE</button>
-      </form></li>
+      <li>
+        <a href="/stylists/$stylist.getId()">$stylist.getName()</a>
+        <form action="/stylists/$stylist.getId()/delete" method="post" style="display: inline">
+          <button type="submit" class="btn btn-primary" id="delete-stylist">DELETE</button>
+        </form>
+      </li>
     #end
   </ul>
 #else
@@ -38,8 +41,8 @@
     <label for="name">Name</label>
     <input id="name" name="name" type="text" class="form-control">
 
-    <label for="detail">Details</label>
-    <input id="detail" name="detail" type="text" class="form-control">
+    <label for="details">Details</label>
+    <input id="details" name="details" type="text" class="form-control">
   </div>
 
   <button type="submit" class="btn btn-primary">Add client</button>
