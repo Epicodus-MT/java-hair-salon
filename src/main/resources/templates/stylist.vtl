@@ -9,8 +9,12 @@
       </li>
     #end
   </ul>
+  <form action="/stylists/$stylist.getId()" method="post">
+    <label for="name">Stylist Name</label>
+    <input id="name" name="name" type="text" value="$stylist.getName()">
+
+    <button type="submit" class="btn btn-primary">Update Stylist</button>
+  </form>
 #else
   <p>There are no clients yet.</p>
 #end
-
-<!--client.vtl-->

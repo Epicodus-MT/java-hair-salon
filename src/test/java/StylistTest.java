@@ -44,16 +44,4 @@ public class StylistTest {
     assertEquals(true, Stylist.all().get(0).equals(firstStylist));
     assertEquals(true, Stylist.all().get(1).equals(secondStylist));
   }
-
-  // @Test
-  // public void getClients_retrievesAllClientsFromDatabase_clientsList() {
-  //   Stylist testStylist = new Stylist("Johnny");
-  //   testStylist.save();
-  //   Client firstClient = new Client("Izzy", testStylist.getId());
-  //   firstClient.save();
-  //   Client secondClient = new Client("Thomas", testStylist.getId());
-  //   secondClient.save();
-  //   Object[] clients = new Object[] { firstClient, secondClient };
-  //   assertTrue(testStylist.getClients().containsAll(Arrays.asList(clients)));
-  // }
 }
